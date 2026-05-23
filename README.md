@@ -9,7 +9,7 @@ This repository contains the implementation and documentation for the **first pr
 * **Mahdi Zargarzadeh**
 * **Reza MirMohammadSadehi**
 * **Arshia Kazemio**
-* * **Mohammad Ali Safaei**
+* **Mohammad Ali Safaei**
 
 ---
 
