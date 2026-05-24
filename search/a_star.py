@@ -1,8 +1,57 @@
-def a_star():
-    pass
+import heapq
+
 def a_star(initial_state):
-    def heuristic (*args):
-        pass
+    
+    def heuristic(state):
+        agent = state.get_agent_position()
+        targets = list(state.get_targets_positions())
+
+        if len(targets) == 0:
+            return 0            
+        
+        closest_cost = min(heuristic_func(agent, t) for t in targets)
+
+        if len(targets) == 1:
+            mst_cost = 0
+        else:
+            mst_cost = (MST(targets))
+
+        cost = (closest_cost + mst_cost) * 5                       
+
+        return cost
+
+    if initial_state.is_goal_state():
+        return []
+    
+    expand_time = 0
+    frontier = [(heuristic(initial_state), expand_time, 0, initial_state, [])]
+    reached = {initial_state : 0}
+
+    while frontier:
+
+        f_n, time, g_n, state, path = heapq.heappop(frontier)
+        
+        if state.is_goal_state():
+            return path
+        
+        if g_n > reached[state]:
+            continue
+
+        for action, step_cost, next_state in state.get_successors():
+
+            if next_state.is_collision_state():
+                continue
+
+            g_child = g_n + step_cost
+            if next_state not in reached or g_child < reached[next_state]:
+
+                reached[next_state] = g_child
+                f_n = g_child + heuristic(next_state)
+                expand_time += 1
+                heapq.heappush(frontier, (f_n, expand_time, g_child, next_state, path + [action]))
+
+    return []
+
 
 
 def heuristic_func(a, b):
