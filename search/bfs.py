@@ -1,17 +1,17 @@
 from collections import deque
 
-def bfs(start):
+def bfs(initial_state):
 
-    if start.is_goal_state():
+    if initial_state.is_goal_state():
         return []
 
-    q = deque()
-    q.append((start, []))
+    node_queue = deque()
+    node_queue.append((initial_state, []))
     visited = set()
-    visited.add(start)
+    visited.add(initial_state)
 
-    while q:
-        state, path = q.popleft()
+    while node_queue:
+        state, path = node_queue.popleft()
 
         for action, cost, next_state in state.get_successors():
 
@@ -23,6 +23,6 @@ def bfs(start):
 
             if next_state not in visited:
                 visited.add(next_state)
-                q.append((next_state, path + [action]))
+                node_queue.append((next_state, path + [action]))
 
     return []
