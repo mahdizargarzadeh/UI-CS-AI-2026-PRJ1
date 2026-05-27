@@ -1,6 +1,6 @@
 # AI Course - Project 1
 
-This repository contains the implementation and documentation for the first project of the Artificial Intelligence course at the University of Isfahan.
+This repository contains the implementation and documentation for the **first project** of the Artificial Intelligence course at the University of Isfahan.
 
 ---
 
